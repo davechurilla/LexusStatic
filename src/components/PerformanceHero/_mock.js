@@ -1,5 +1,5 @@
 export default {
   props: {
-    children: 'This is a Performance Hero Component',
+    children: 'This is the Performance Hero Component',
   }
 };

@@ -10,3 +10,17 @@ export default {
     display: inline-block;
   `,
 };
+
+// import styled from 'styled-components'
+
+const padding = '3em'
+
+const Section = styled.section`
+  color: red;
+
+  /* Pass variables as inputs */
+  padding: ${padding};
+
+  /* Adjust the background from the properties */
+  background: ${props => props.background};
+`
