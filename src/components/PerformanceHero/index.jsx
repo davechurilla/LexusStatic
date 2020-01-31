@@ -1,6 +1,15 @@
 import React from "react";
 import Styled from "./index.styled";
 import Typography from "../Typography";
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+  body, html {
+    background-color: black;
+    padding: 0;
+    margin:0;
+  }
+`
 
 const PerformanceHero = ({
 	headline,
@@ -14,36 +23,41 @@ const PerformanceHero = ({
 }) => {
 	return (
 		<Styled.PerformanceHero>
+		<GlobalStyle />
 			<Styled.SectionHero>
 				<Styled.VideoWrapper>
-					<video autoPlay muted loop className="hero-video">
+					<Styled.BackgroundVideo autoPlay muted loop>
 						<source src={`${heroVideo}.mp4`} />
 						<source src={`${heroVideo}.webm`} />
-					</video>
+					</Styled.BackgroundVideo>
 				</Styled.VideoWrapper>
 				<Styled.VideoWrapperImage>
-					<Styled.TabletOnly>
-						<img src={`${tabletImg}`} className="bg-image" alt="" />
-						<Styled.ResponsiveDisclaimer>
-							<span>{options}</span>
-						</Styled.ResponsiveDisclaimer>
-					</Styled.TabletOnly>
-					<Styled.MobileOnly>
-						<img src={`${mobileImg}`} className="bg-image" alt="" />
-						<Styled.ResponsiveDisclaimer>
-							<span>{options}</span>
-						</Styled.ResponsiveDisclaimer>
-					</Styled.MobileOnly>
+					<Styled.Wrapper>
+						<Styled.TabletOnly src={`${tabletImg}`} alt="" />
+						<Styled.MobileDisclaimer>
+							<Styled.DisclaimerContainer>
+								<span>{options}</span>
+							</Styled.DisclaimerContainer>
+						</Styled.MobileDisclaimer>
+					</Styled.Wrapper>
+					<Styled.Wrapper>
+						<Styled.MobileOnly src={`${mobileImg}`} alt="" />
+						<Styled.MobileDisclaimer>
+							<Styled.DisclaimerContainer>
+								<span>{options}</span>
+							</Styled.DisclaimerContainer>
+						</Styled.MobileDisclaimer>
+					</Styled.Wrapper>
 				</Styled.VideoWrapperImage>
 				<Styled.VideoContent>
 					<Styled.VideoTitle>
-						<div className="divider-vert"></div>
+						<Styled.DividerVert></Styled.DividerVert>
 						<div>
 							<Styled.Title>{headline}</Styled.Title>
 							<Styled.H4>{subheadline}</Styled.H4>
 						</div>
 					</Styled.VideoTitle>
-					<Styled.VideoButtons>
+					<Styled.ButtonWrapper>
 						<Styled.Button
 							as="a"
 							href={`${heroVideo}.mp4`}
@@ -54,7 +68,7 @@ const PerformanceHero = ({
 						<Styled.Button primary as="a" href="#explore">
 							{cta[1]}
 						</Styled.Button>
-					</Styled.VideoButtons>
+					</Styled.ButtonWrapper>
 				</Styled.VideoContent>
 				<Styled.Disclaimer>
 					<Styled.DisclaimerContainer>
