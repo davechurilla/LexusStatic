@@ -11,12 +11,24 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const SectionMission = ({ children }) => {
-  return (
-    <Styled.SectionMission>
-      {children}
-    </Styled.SectionMission>
-  );
+const SectionMission = ({ headline, bodytext }) => {
+	return (
+		<Styled.SectionMission>
+			<GlobalStyle />
+			<Styled.Container>
+				<Styled.Heading>{headline}</Styled.Heading>
+				<Styled.Divider></Styled.Divider>
+				<Styled.TextContent>
+					<Styled.BodyText>
+						{bodytext[0]}
+					</Styled.BodyText>
+					<Styled.BodyText>
+						{bodytext[1]}
+					</Styled.BodyText>
+				</Styled.TextContent>
+			</Styled.Container>
+		</Styled.SectionMission>
+	);
 };
 
 export default SectionMission;
