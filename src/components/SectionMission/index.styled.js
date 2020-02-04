@@ -22,10 +22,10 @@ export default {
 		padding-right: 22px;
 	`,
 	TextContent: styled.div`
-    font-size: 14px;
+		font-size: 14px;
 		${breakpoint("tablet", "up")} {
 			font-size: 18px;
-		}    
+		}
 	`,
 	Heading: styled.h2`
 		font-size: 21px;
@@ -46,12 +46,12 @@ export default {
 		width: 40px;
 		${breakpoint("tablet", "up")} {
 			width: 80px;
-		}		
+		}
 	`,
 	BodyText: styled.p`
 		margin: 1em 0;
 		line-height: 1.45em;
-		font-family: "Palatino","Palatino Linotype","Book Antiqua",serif;
+		font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
 		${breakpoint("tablet", "up")} {
 			line-height: 1.35em;
 		}
