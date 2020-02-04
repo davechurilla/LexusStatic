@@ -7,6 +7,7 @@ export default {
 		padding-bottom: 48px;
 		padding-top: 48px;
 		color: #fff;
+		background: #000;
 		${breakpoint("tablet", "up")} {
 			padding-bottom: 72px;
 			padding-top: 56px;

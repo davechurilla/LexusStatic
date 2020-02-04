@@ -1,30 +1,18 @@
 import React from "react";
 import Styled from "./index.styled";
 import Typography from "../Typography";
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-  body, html {
-    background-color: black;
-    padding: 0;
-    margin:0;
-  }
-`;
 
 const SectionMission = ({ headline, bodytext }) => {
+	const bodytextItems = bodytext.map((item) =>
+	  <Styled.BodyText>{item}</Styled.BodyText>
+	);	
 	return (
 		<Styled.SectionMission>
-			<GlobalStyle />
 			<Styled.Container>
 				<Styled.Heading>{headline}</Styled.Heading>
 				<Styled.Divider></Styled.Divider>
 				<Styled.TextContent>
-					<Styled.BodyText>
-						{bodytext[0]}
-					</Styled.BodyText>
-					<Styled.BodyText>
-						{bodytext[1]}
-					</Styled.BodyText>
+					{bodytextItems}
 				</Styled.TextContent>
 			</Styled.Container>
 		</Styled.SectionMission>
