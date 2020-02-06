@@ -1,29 +1,31 @@
 import React from "react";
 import Styled from "./index.styled";
 import Typography from "../Typography";
-import { createGlobalStyle } from 'styled-components'
-
-const GlobalStyle = createGlobalStyle`
-  body, html {
-    background-color: black;
-    padding: 0;
-    margin:0;
-  }
-`
+import { createGlobalStyle } from "styled-components";
 
 const PerformanceHero = ({
 	headline,
 	subheadline,
 	heroVideo,
-	mobileImg,
-	tabletImg,
+	responsiveImages,
 	options,
-	cta,
+	ctas,
 	disclaimer
 }) => {
+
+const CtaItems = () => (	
+		<div>
+		<Styled.Button as="a" href={`${ctas[0].url}`}>
+			{ctas[0].text}
+		</Styled.Button>
+		<Styled.Button primary as="a" href={`${ctas[1].url}`}>
+			{ctas[1].text}
+		</Styled.Button>						
+		</div>
+)
+
 	return (
 		<Styled.PerformanceHero>
-		<GlobalStyle />
 			<Styled.SectionHero>
 				<Styled.VideoWrapper>
 					<Styled.BackgroundVideo autoPlay muted loop>
@@ -33,7 +35,10 @@ const PerformanceHero = ({
 				</Styled.VideoWrapper>
 				<Styled.VideoWrapperImage>
 					<Styled.Wrapper>
-						<Styled.TabletOnly src={`${tabletImg}`} alt="" />
+						<Styled.TabletOnly
+							src={`${responsiveImages.tabletImg.url}`}
+							alt={`${responsiveImages.tabletImg.alt}`}
+						/>
 						<Styled.MobileDisclaimer>
 							<Styled.DisclaimerContainer>
 								<span>{options}</span>
@@ -41,7 +46,10 @@ const PerformanceHero = ({
 						</Styled.MobileDisclaimer>
 					</Styled.Wrapper>
 					<Styled.Wrapper>
-						<Styled.MobileOnly src={`${mobileImg}`} alt="" />
+						<Styled.MobileOnly
+							src={`${responsiveImages.mobileImg.url}`}
+							alt={`${responsiveImages.mobileImg.alt}`}
+						/>
 						<Styled.MobileDisclaimer>
 							<Styled.DisclaimerContainer>
 								<span>{options}</span>
@@ -58,16 +66,7 @@ const PerformanceHero = ({
 						</div>
 					</Styled.VideoTitle>
 					<Styled.ButtonWrapper>
-						<Styled.Button
-							as="a"
-							href={`${heroVideo}.mp4`}
-							data-target="#hero-modal"
-						>
-							{cta[0]}
-						</Styled.Button>
-						<Styled.Button primary as="a" href="#explore">
-							{cta[1]}
-						</Styled.Button>
+						<CtaItems />
 					</Styled.ButtonWrapper>
 				</Styled.VideoContent>
 				<Styled.Disclaimer>

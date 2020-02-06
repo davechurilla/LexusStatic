@@ -4,4 +4,4 @@ import mock from './_mock';
 
 export default { title: 'Performance Hero' };
 
-export const nextExample = () => <PerformanceHero {...mock.props} />;
+export const performanceHero = () => <PerformanceHero {...mock.props} />;
