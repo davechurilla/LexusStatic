@@ -14,16 +14,18 @@ export default {
   			alt: 'mobile image'
   		}
     },
-    ctas: {
-    	0: {
+    ctas: [
+    	 {
 	    	url: 'https://www.lexus.com/media/performance/PerformanceHeader1.mp4',
-	    	text: 'PLAY VIDEO'
+	    	text: 'PLAY VIDEO',
+	    	primary: ''
     	},
-    	1: {
+    	 {
 	    	url: '#explore',
-	    	text: 'SEE ALL MODELS'
+	    	text: 'SEE ALL MODELS',
+	    	primary: 'primary'
     	}
-    },
+    ],
     disclaimer: 'Professional driver on a closed course. Do not attempt. Options shown.',
     options: 'Options shown'
   }

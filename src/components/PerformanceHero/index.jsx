@@ -13,16 +13,11 @@ const PerformanceHero = ({
 	disclaimer
 }) => {
 
-const CtaItems = () => (	
-		<div>
-		<Styled.Button as="a" href={`${ctas[0].url}`}>
-			{ctas[0].text}
+	const CtaItems = () => ctas.map(({url, text, ...cta}) => 	
+		<Styled.Button {...cta} as="a" href={`${url}`}>
+			{text}
 		</Styled.Button>
-		<Styled.Button primary as="a" href={`${ctas[1].url}`}>
-			{ctas[1].text}
-		</Styled.Button>						
-		</div>
-)
+	);
 
 	return (
 		<Styled.PerformanceHero>
