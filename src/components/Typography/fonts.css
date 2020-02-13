@@ -1,0 +1,35 @@
+/* Nobel Light */
+@font-face {
+  font-family: "nobel-light";
+  font-display: swap;
+  src: url("./nobel/nobel-light.woff") format("woff");
+}
+
+/* Nobel Book */
+@font-face {
+  font-family: "nobel-book";
+  font-display: swap;
+  src: url("./nobel/nobel-book.woff") format("woff");
+}
+
+/* Nobel Regular */
+@font-face {
+  font-family: "nobel-regular";
+  font-display: swap;
+  src:  url("./nobel/nobel-regular.woff") format("woff");
+  font-style: normal;
+}
+
+/* Nobel Bold */
+@font-face { 
+  font-family: "nobel-bold";
+  font-display: swap;
+  src: url("./nobel/nobel-bold.woff") format("woff");
+}
+
+/* Pakt */
+@font-face { 
+  font-family: "pakt";
+  font-display: swap;
+  src: url("./pakt/pakt.woff") format("woff");
+}
