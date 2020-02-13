@@ -4,14 +4,18 @@ export default {
     headline: 'PERFORMANCE BORN OF REFINEMENT',
     subheadline: 'The Lexus High-Performance Line',
     heroVideo: 'https://www.lexus.com/media/performance/PerformanceHeader1',
+    backupImg: {
+    	url: 'https://www.lexus.com/cm-img/performance/landing/05/Lexus-Performance-Hero-Tablet-960x469_M75.jpg',
+    	alt: 'Lexus Performance'
+    },
     responsiveImages: {
   	  tabletImg: {
   	  	url: 'https://www.lexus.com/cm-img/performance/landing/05/Lexus-Performance-Hero-Tablet-960x469_M75.jpg',
-  	  	alt: 'tablet image'
+  	  	alt: 'Tablet image'
   		},
   		mobileImg: {
   			url: 'https://www.lexus.com/cm-img/performance/landing/05/Lexus-Performance-Hero-Mobile-640x700_M75.jpg',
-  			alt: 'mobile image'
+  			alt: 'Mobile image'
   		}
     },
     ctas: [

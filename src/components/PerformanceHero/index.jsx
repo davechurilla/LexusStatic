@@ -1,12 +1,17 @@
 import React from "react";
 import Styled from "./index.styled";
 import Typography from "../Typography";
-import { createGlobalStyle } from "styled-components";
+import {
+  MobileBreakpoint,
+  TabletBreakpoint,
+  useMobileBreakpoint,
+} from '../../packages/breakpoints';
 
 const PerformanceHero = ({
 	headline,
 	subheadline,
 	heroVideo,
+	backupImg,
 	responsiveImages,
 	options,
 	ctas,
@@ -14,7 +19,7 @@ const PerformanceHero = ({
 }) => {
 
 	const CtaItems = () => ctas.map(({url, text, ...cta}) => 	
-		<Styled.Button {...cta} as="a" href={`${url}`}>
+		<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
 			{text}
 		</Styled.Button>
 	);
@@ -23,34 +28,38 @@ const PerformanceHero = ({
 		<Styled.PerformanceHero>
 			<Styled.SectionHero>
 				<Styled.VideoWrapper>
-					<Styled.BackgroundVideo autoPlay muted loop>
+					<Styled.BackgroundVideo autoPlay muted loop poster={`${backupImg.url}`}>
 						<source src={`${heroVideo}.mp4`} />
 						<source src={`${heroVideo}.webm`} />
 					</Styled.BackgroundVideo>
 				</Styled.VideoWrapper>
 				<Styled.VideoWrapperImage>
-					<Styled.Wrapper>
-						<Styled.TabletOnly
-							src={`${responsiveImages.tabletImg.url}`}
-							alt={`${responsiveImages.tabletImg.alt}`}
-						/>
-						<Styled.MobileDisclaimer>
-							<Styled.DisclaimerContainer>
-								<span>{options}</span>
-							</Styled.DisclaimerContainer>
-						</Styled.MobileDisclaimer>
-					</Styled.Wrapper>
-					<Styled.Wrapper>
-						<Styled.MobileOnly
-							src={`${responsiveImages.mobileImg.url}`}
-							alt={`${responsiveImages.mobileImg.alt}`}
-						/>
-						<Styled.MobileDisclaimer>
-							<Styled.DisclaimerContainer>
-								<span>{options}</span>
-							</Styled.DisclaimerContainer>
-						</Styled.MobileDisclaimer>
-					</Styled.Wrapper>
+				<TabletBreakpoint>
+						<Styled.Wrapper>
+							<Styled.TabletOnly
+								src={`${responsiveImages.tabletImg.url}`}
+								alt={`${responsiveImages.tabletImg.alt}`}
+							/>
+							<Styled.MobileDisclaimer>
+								<Styled.DisclaimerContainer>
+									<span>{options}</span>
+								</Styled.DisclaimerContainer>
+							</Styled.MobileDisclaimer>
+						</Styled.Wrapper>
+					</TabletBreakpoint>	
+					<MobileBreakpoint>
+						<Styled.Wrapper>
+							<Styled.MobileOnly
+								src={`${responsiveImages.mobileImg.url}`}
+								alt={`${responsiveImages.mobileImg.alt}`}
+							/>
+							<Styled.MobileDisclaimer>
+								<Styled.DisclaimerContainer>
+									<span>{options}</span>
+								</Styled.DisclaimerContainer>
+							</Styled.MobileDisclaimer>
+						</Styled.Wrapper>
+					</MobileBreakpoint>
 				</Styled.VideoWrapperImage>
 				<Styled.VideoContent>
 					<Styled.VideoTitle>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import breakpoint from '../../packages/breakpoints';
-import { createGlobalStyle } from 'styled-components'
 
 export default {
 
@@ -28,9 +27,16 @@ export default {
 	      display: block;
 	    }		
 	`,
+	BackupImage: styled.img`
+		position: absolute;
+		left:0;
+		top: 0;
+		display: block;
+	`,
 	BackgroundVideo: styled.video`
 		width: 100%;
-		object-fit: cover;		
+		object-fit: cover;	
+		display: block;
 	`,
 	Wrapper: styled.div`
 		position: relative;
