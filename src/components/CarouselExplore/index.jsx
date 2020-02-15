@@ -27,12 +27,16 @@ import './styles.css';
 				slidesToScroll: 1,
 				arrows: true,
 			};
+			const props = {
+				children: this.children,
+				backupImg: this.backupImg 
+			};
 			return (
-				<Styled.ExploreCaroursel>
+				<Styled.ExploreCaroursel {...props}l>
 					<div>
 						<Slider {...settings}>
 							<Styled.VideoWrapper>
-								<Styled.BackgroundVideo autoPlay muted loop poster="">
+								<Styled.BackgroundVideo autoPlay muted loop poster={`${this.props.backupImg.url}`}>
 									<source 
 										src="https://www.lexus.com/media/performance/Lexus-Performance-LC_1280x720.mp4"
 										type="video/mp4" />
