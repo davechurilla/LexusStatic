@@ -1,46 +1,44 @@
 .slick-prev {
-    left: 25px;
+    left: calc(50% - 43px);
+    transform: translate(-50%,0);
 }
 
 .slick-next {
-    right: 25px;
+    right: calc(50% - 43px);
+    transform: translate(50%,0);
+}
+
+.slick-prev:before,
+.slick-next:before {
+    opacity: 1;
+}
+
+.slick-prev:before {
+    content: url('https://www.lexus.com/performance/img/left.png');
+}
+
+.slick-next:before {
+    content: url('https://www.lexus.com/performance/img/right.png');
 }
 
 .slick-prev,
 .slick-next {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    transform: translate(0, -50%);
-    cursor: pointer;
-    color: white;
+    bottom: 33px;
+    top: unset;
     z-index: 1000;
-    border: none;
-    outline: none;
-    background: transparent;
 }
 
 .slick-dots {
-    position: absolute;
-    bottom: 20px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-    color: #fff;
+    bottom: 30px;
 }
 
-video {
-    object-fit: cover;
-    width: 100%;
+.slick-dots li {
+    margin: 0 -1px;
 }
+
+.slick-dots li button:before {
+    font-size: 10px;
+}    
 
 .slick-dots li.slick-active button:before {
     opacity: 1;
@@ -48,6 +46,12 @@ video {
 }
 
 .slick-dots li button:before {
-    opacity: 0.5;
-    color: white;
+    opacity: 1;
+    color: #666;
+}
+
+video {
+    object-fit: cover;
+    width: 100%;
+    display:block;
 }
