@@ -35,6 +35,7 @@ import './styles.css';
 			};
 			const props = {
 				backupImg: this.backupImg,
+				heading: this.heading,
 				headline: this.headline, 
 				bodycopy: this.bodycopy,
 				disclaimer: this.disclaimer,
@@ -47,7 +48,11 @@ import './styles.css';
 				</Styled.Button>
 			);			
 			return (
-				<Styled.ExploreCaroursel {...props}l>
+				<Styled.ExploreCaroursel {...props}l>		
+					<Styled.HeadingComponent>
+						<Styled.Heading>{this.props.heading}</Styled.Heading>
+						<Styled.Divider></Styled.Divider>
+					</Styled.HeadingComponent>						
 					<Slider {...settings}>
 						<Styled.VideoWrapper>
 							<Styled.BackgroundVideo autoPlay muted loop poster={`${this.props.backupImg.url}`}>

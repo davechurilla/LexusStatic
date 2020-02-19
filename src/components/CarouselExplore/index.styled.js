@@ -6,9 +6,14 @@ export default {
 		font-family: "nobel-regular", Helvetica, Arial, sans-serif;
 		display: block;
 		position: relative;
+		background: black;
+		${breakpoint("desktop", "up")} {
+			background: transparent;
+		}
   `,
 	VideoWrapper: styled.div`
 		position: relative;	
+		display: block;
 	`,
 	BackupImage: styled.img`
 		position: absolute;
@@ -18,12 +23,42 @@ export default {
 	`,
 	BackgroundVideo: styled.video`
 		width: 100%;
-		object-fit: cover;	
-		// display: none;
-	    // ${breakpoint('desktop', 'up')}{
-		// 	display: block;
-		// }			
+		object-fit: cover;		
+		display: none;
+		display: block;
 	`,
+	HeadingComponent: styled.div`
+		text-align: center;
+		color: white;
+		${breakpoint("desktop", "up")} {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%,0);
+			z-index:2;
+		}		
+	`,
+	Heading: styled.h2`
+		font-size: 18px;
+		line-height: 1.3em;
+		margin: 1.5em 0 .5em;
+		letter-spacing: 1px;
+		font-family: "nobel-book", Helvetica, Arial, sans-serif;
+		text-transform: uppercase;
+		font-weight: 300;
+		${breakpoint("tablet", "up")} {
+			font-size: 28px;
+		}
+	`,
+	Divider: styled.div`
+		background-color: currentColor;
+		display: inline-block;
+		height: 1px;
+		margin: 10px 0;
+		width: 50px;
+		${breakpoint("tablet", "up")} {
+			// width: 50px;
+		}
+	`,	
 	Wrapper: styled.div`
 		position: relative;
 		margin: 0;
@@ -88,23 +123,25 @@ export default {
 	`,
 	Title: styled.h3`
 		font-family: "nobel-bold", Helvetica, Arial, sans-serif;
-		font-size: 2rem;
+		font-size: 1.4rem;
 		line-height: 0.9em;
 		font-weight: 400;
 		margin: 0;
 	    ${breakpoint('tablet', 'up')}{
 				font-family: "nobel-bold", Helvetica, Arial, sans-serif;
-				font-size: 1.4rem;
 				margin-bottom: 1.5em;
 	    }	
 	`,
 	BodyCopy: styled.p`
 		font-family: "Palatino","Palatino Linotype","Book Antiqua",serif;
 		font-weight: normal;
-		font-size: 18px;
+		font-size: 14px;
 		margin-bottom: 24px;
 		text-transform: none;
 		line-height: 1.35em;
+		${breakpoint('tablet', 'up')}{
+			font-size: 18px;
+		}			
 		${breakpoint('desktop', 'up')}{
 			font-family: "nobel-regular", Helvetica, Arial, sans-serif;
 		}				
@@ -125,21 +162,19 @@ export default {
 	Button: styled.button`
 		background: ${props => (props.primary ? "transparent" : "white")};
 		color: ${props => (props.primary ? "white" : "black")};
-		font-size: 10px;
+		font-size: 12px;
 		font-family: "nobel-bold", Helvetica, Arial, sans-serif;
 		text-transform: uppercase;
 		font-weight: bold;
-		margin: 0 1.25em 0 0;
-		padding: 10px;
+		margin: 0 0.25em 0 0;
+		padding: 1.2em;
+		letter-spacing: 2px;
 		border: 2px solid white;
 		text-decoration: none;
 		position: relative;
 		display: inline-block;
-		letter-spacing: 1px;
 	    ${breakpoint('tablet', 'up')}{
-	      font-size: 12px;
-	      padding: 1.2em;
-	      letter-spacing: 2px;
+				margin: 0 1.25em 0 0;
 	    }			
 		&:hover {
 			background: black;

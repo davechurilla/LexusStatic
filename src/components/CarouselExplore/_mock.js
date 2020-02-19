@@ -4,6 +4,7 @@ export default {
 			url: "https://www.lexus.com/cm-img/performance/landing/05/Lexus-Performance-Hero-Tablet-960x469_M75.jpg",
 			alt: "Lexus Performance"
 		},
+		heading: 'EXPLORE LEXUS HIGH PERFORMANCE',
 		headline: 'LC 500',
 		bodycopy: 'The embodiment of performance prowess. A 10-speed Direct-Shift transmission, a first of its kind in the luxury category*, races through gears with lightning-quick precision. Always selecting the optimal gear, it maximizes output from one of the most powerful naturally aspirated 5.0-liter V8 engines available.',
 		responsiveImages: {
