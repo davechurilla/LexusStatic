@@ -17,6 +17,10 @@ import "slick-carousel/slick/slick-theme.css";
 import './styles.css';
 
 	export default class ExploreCaroursel extends Component {
+		constructor(props) {
+			super(props); 
+			this.props = props;
+		}
 		render() {
 			const settings = {
 				dots: true,
@@ -33,22 +37,13 @@ import './styles.css';
 
 				]				
 			};
-			const props = {
-				backupImg: this.backupImg,
-				heading: this.heading,
-				headline: this.headline, 
-				bodycopy: this.bodycopy,
-				disclaimer: this.disclaimer,
-				responsiveImages: this.responsiveImages,
-				options: this.options
-			};
 			const CtaItems = () => this.props.ctas.map(({url, text, ...cta}) => 	
 				<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
 					{text}
 				</Styled.Button>
 			);			
 			return (
-				<Styled.ExploreCaroursel {...props}l>		
+				<Styled.ExploreCaroursel {...this.props}l>		
 					<Styled.HeadingComponent>
 						<Styled.Heading>{this.props.heading}</Styled.Heading>
 						<Styled.Divider></Styled.Divider>
