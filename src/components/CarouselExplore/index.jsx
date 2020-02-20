@@ -22,11 +22,11 @@ import './styles.css';
 			this.props = props;
 			this.state = {
 				activeIndex: 0,
+				slideIndex:0
 			};		
 		}
 
 		handleClick = (e, id) => {
-			console.log('this is:', id);
 			e.preventDefault();
 			const slide = Object.values(id)[0];
 			this.setState({ activeIndex: slide })
@@ -47,7 +47,8 @@ import './styles.css';
 						settings: "unslick"					
 					}
 
-				]				
+				],
+				afterChange: current => this.setState({ activeIndex: current })				
 			};
 			
 			const NavItems = () => this.props.navItems.map(({text, id, ...navitem}) => 	
