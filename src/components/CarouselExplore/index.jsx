@@ -16,13 +16,12 @@ import "slick-carousel/slick/slick-theme.css";
 //Custom styles
 import './styles.css';
 
-	export default class ExploreCaroursel extends Component {
+	export default class ExploreCarousel extends Component {
 		constructor(props) {
 			super(props); 
-			this.props = props;
 			this.state = {
-				activeIndex: 0,
-				slideIndex:0
+				oldSlide: 0,
+				activeIndex: 0
 			};		
 		}
 
@@ -48,9 +47,10 @@ import './styles.css';
 					}
 
 				],
-				afterChange: current => this.setState({ activeIndex: current })				
+				beforeChange: (current, next) =>
+        this.setState({ oldSlide: current, activeIndex: next })				
 			};
-			
+
 			const NavItems = () => this.props.navItems.map(({text, id, ...navitem}) => 	
 				<Styled.CarouselNavLi  key={text} className={ this.state.activeIndex === id ? 'active' : '' }>
 					<Styled.CarouselNavItem {...navitem} onClick={(e) => this.handleClick(e, {id})} key={text} >
@@ -58,109 +58,96 @@ import './styles.css';
 					</Styled.CarouselNavItem>
 				</Styled.CarouselNavLi>
 			);			
-			const CtaItems = () => this.props.ctas.map(({url, text, ...cta}) => 	
+			const CtaItems = () => this.ctas.map(({url, text, ...cta}) => 	
 				<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
 					{text}
 				</Styled.Button>
 			);			
 			return (
-				<Styled.ExploreCaroursel {...this.props}l>		
+				<Styled.ExploreCarousel {...this.props}>		
 					<Styled.HeadingComponent>
 						<Styled.Heading>{this.props.heading}</Styled.Heading>
 						<Styled.Divider></Styled.Divider>
 					</Styled.HeadingComponent>
 					<Styled.CarouselNav>
 							<NavItems />
-					</Styled.CarouselNav>											
-					<Slider ref={slider => (this.slider = slider)} {...settings}>
-						<Styled.VideoWrapper>
-							<Styled.BackgroundVideo autoPlay muted loop poster={`${this.props.backupImg.url}`}>
-								<source 
-									src="https://www.lexus.com/media/performance/Lexus-Performance-LC_1280x720.mp4"
-									type="video/mp4" />
-								<source 
-									src="https://www.lexus.com/media/performance/Lexus-Performance-LC_1280x720.mp4"
-									type="video/webm" />
-							</Styled.BackgroundVideo>																
-							<Styled.SlideContent>
+					</Styled.CarouselNav>
+						<Slider ref={slider => (this.slider = slider)} {...settings}>
+						{ this.props.slides.map((slide) => (	
+							<Styled.VideoWrapper key={slide.headline}>
+								<Styled.BackgroundVideo autoPlay muted loop poster={`${slide.backupImg.url}`}>
+									<source src={`${slide.heroVideo}.mp4`} />
+									<source src={`${slide.heroVideo}.webm`} />
+								</Styled.BackgroundVideo>																
+								<Styled.SlideContent>
+									<Styled.ContentInner>
+										<Styled.VideoTitle>
+											<div>
+												<Styled.Title>{slide.headline}</Styled.Title>
+												<Styled.BodyCopy>{slide.bodycopy}</Styled.BodyCopy>
+											</div>
+										</Styled.VideoTitle>
+										{slide.ctas.map(({url, text, ...cta}) => 	
+											<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
+												{text}
+											</Styled.Button>
+										)}
+									</Styled.ContentInner>
+								</Styled.SlideContent>
+								<Styled.Disclaimer>
+									<Styled.DisclaimerContainer>
+										<span>{slide.disclaimer}</span>
+									</Styled.DisclaimerContainer>
+								</Styled.Disclaimer>																
+							</Styled.VideoWrapper>
+							))}			
+						</Slider>
+						{ this.props.slides.map((slide) => (
+						<Styled.ResponsiveContainer key={slide.headline}>
+							<TabletBreakpoint>
+								<Styled.Wrapper>
+									<Styled.TabletOnly
+										src={`${slide.responsiveImages.tabletImg.url}`}
+										alt={`${slide.responsiveImages.tabletImg.alt}`}
+									/>
+									<Styled.MobileDisclaimer>
+										<Styled.DisclaimerContainer>
+											{slide.options}
+										</Styled.DisclaimerContainer>
+									</Styled.MobileDisclaimer>
+								</Styled.Wrapper>
+							</TabletBreakpoint>
+							<MobileBreakpoint>
+								<Styled.Wrapper>
+									<Styled.MobileOnly
+										src={`${slide.responsiveImages.mobileImg.url}`}
+										alt={`${slide.responsiveImages.mobileImg.alt}`}
+									/>
+									<Styled.MobileDisclaimer>
+										<Styled.DisclaimerContainer>
+											{slide.options}
+										</Styled.DisclaimerContainer>
+									</Styled.MobileDisclaimer>
+								</Styled.Wrapper>
+							</MobileBreakpoint>
+							<Styled.ResponsiveContent>
 								<Styled.ContentInner>
 									<Styled.VideoTitle>
 										<div>
-											<Styled.Title>{this.props.headline}</Styled.Title>
-											<Styled.BodyCopy>{this.props.bodycopy}</Styled.BodyCopy>
+											<Styled.Title>{slide.headline}</Styled.Title>
+											<Styled.BodyCopy>{slide.bodycopy}</Styled.BodyCopy>
 										</div>
 									</Styled.VideoTitle>
-									<CtaItems />
+									{slide.ctas.map(({url, text, ...cta}) => 	
+										<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
+											{text}
+										</Styled.Button>
+									)}
 								</Styled.ContentInner>
-							</Styled.SlideContent>
-							<Styled.Disclaimer>
-								<Styled.DisclaimerContainer>
-									<span>{this.props.disclaimer}</span>
-								</Styled.DisclaimerContainer>
-							</Styled.Disclaimer>																
-						</Styled.VideoWrapper>			
-						<Styled.VideoWrapper>
-							<Styled.BackgroundVideo autoPlay muted loop poster="">
-								<source 
-									src="https://www.lexus.com/media/performance/PerfRCF1.mp4"
-									type="video/mp4" />
-								<source 
-									src="https://www.lexus.com/media/performance/PerfRCF1.webm"
-									type="video/webm" />
-							</Styled.BackgroundVideo>
-						</Styled.VideoWrapper>	
-						<Styled.VideoWrapper>
-							<Styled.BackgroundVideo autoPlay muted loop poster="">
-								<source 
-									src="https://www.lexus.com/media/performance/Lexus-Performance-GS_F_1280x720.mp4"
-									type="video/mp4" />
-								<source 
-									src="https://www.lexus.com/media/performance/Lexus-Performance-GS_F_1280x720.webm"
-									type="video/webm" />
-							</Styled.BackgroundVideo>
-						</Styled.VideoWrapper>																
-					</Slider>
-					{/* end of carousel, mobile content */}
-					<Styled.ResponsiveContainer>
-						<TabletBreakpoint>
-							<Styled.Wrapper>
-								<Styled.TabletOnly
-									src={`${this.props.responsiveImages.tabletImg.url}`}
-									alt={`${this.props.responsiveImages.tabletImg.alt}`}
-								/>
-								<Styled.MobileDisclaimer>
-									<Styled.DisclaimerContainer>
-										<span>{this.props.options}</span>
-									</Styled.DisclaimerContainer>
-								</Styled.MobileDisclaimer>
-							</Styled.Wrapper>
-						</TabletBreakpoint>
-						<MobileBreakpoint>
-							<Styled.Wrapper>
-								<Styled.MobileOnly
-									src={`${this.props.responsiveImages.mobileImg.url}`}
-									alt={`${this.props.responsiveImages.mobileImg.alt}`}
-								/>
-								<Styled.MobileDisclaimer>
-									<Styled.DisclaimerContainer>
-										<span>{this.props.options}</span>
-									</Styled.DisclaimerContainer>
-								</Styled.MobileDisclaimer>
-							</Styled.Wrapper>
-						</MobileBreakpoint>
-						<Styled.ResponsiveContent>
-							<Styled.ContentInner>
-								<Styled.VideoTitle>
-									<div>
-										<Styled.Title>{this.props.headline}</Styled.Title>
-										<Styled.BodyCopy>{this.props.bodycopy}</Styled.BodyCopy>
-									</div>
-								</Styled.VideoTitle>
-								<CtaItems />
-							</Styled.ContentInner>
-						</Styled.ResponsiveContent>
-					</Styled.ResponsiveContainer>										
-				</Styled.ExploreCaroursel>
+							</Styled.ResponsiveContent>
+						</Styled.ResponsiveContainer>
+						))}
+				</Styled.ExploreCarousel>
 			);
 		}
 	}

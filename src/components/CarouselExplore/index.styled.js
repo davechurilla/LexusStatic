@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import breakpoint from '../../packages/breakpoints';
 
 export default {
-	ExploreCaroursel: styled.div`
+	ExploreCarousel: styled.div`
 		font-family: "nobel-regular", Helvetica, Arial, sans-serif;
 		display: block;
 		position: relative;

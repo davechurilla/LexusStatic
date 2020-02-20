@@ -1,7 +1,7 @@
 import React from 'react';
-import ExploreCaroursel from './index';
+import ExploreCarousel from './index';
 import mock from './_mock';
 
 export default { title: 'Explore Component' };
 
-export const exploreCarouselComponent = () => <ExploreCaroursel {...mock.props} />;
+export const exploreCarouselComponent = () => <ExploreCarousel {...mock.props} />;
