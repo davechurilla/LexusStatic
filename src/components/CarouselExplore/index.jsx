@@ -20,7 +20,19 @@ import './styles.css';
 		constructor(props) {
 			super(props); 
 			this.props = props;
+			this.state = {
+				activeIndex: 0,
+			};		
 		}
+
+		handleClick = (e, id) => {
+			console.log('this is:', id);
+			e.preventDefault();
+			const slide = Object.values(id)[0];
+			this.setState({ activeIndex: slide })
+			this.slider.slickGoTo(slide)
+		}
+
 		render() {
 			const settings = {
 				dots: true,
@@ -37,6 +49,14 @@ import './styles.css';
 
 				]				
 			};
+			
+			const NavItems = () => this.props.navItems.map(({text, id, ...navitem}) => 	
+				<Styled.CarouselNavLi  key={text} className={ this.state.activeIndex === id ? 'active' : '' }>
+					<Styled.CarouselNavItem {...navitem} onClick={(e) => this.handleClick(e, {id})} key={text} >
+						{text}
+					</Styled.CarouselNavItem>
+				</Styled.CarouselNavLi>
+			);			
 			const CtaItems = () => this.props.ctas.map(({url, text, ...cta}) => 	
 				<Styled.Button {...cta} as="a" href={`${url}`} key={text}>
 					{text}
@@ -47,8 +67,11 @@ import './styles.css';
 					<Styled.HeadingComponent>
 						<Styled.Heading>{this.props.heading}</Styled.Heading>
 						<Styled.Divider></Styled.Divider>
-					</Styled.HeadingComponent>						
-					<Slider {...settings}>
+					</Styled.HeadingComponent>
+					<Styled.CarouselNav>
+							<NavItems />
+					</Styled.CarouselNav>											
+					<Slider ref={slider => (this.slider = slider)} {...settings}>
 						<Styled.VideoWrapper>
 							<Styled.BackgroundVideo autoPlay muted loop poster={`${this.props.backupImg.url}`}>
 								<source 

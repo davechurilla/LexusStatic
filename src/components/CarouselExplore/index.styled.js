@@ -59,6 +59,56 @@ export default {
 			// width: 50px;
 		}
 	`,	
+	CarouselNav: styled.ul`
+		display: none;	
+		${breakpoint("desktop", "up")} {
+			display: block;
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%,0);
+			z-index:2;
+			display: flex;
+			flex-deirection: row;
+			top: 130px;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}			
+	`,
+	CarouselNavLi: styled.li`
+		margin: 0;
+		padding: 0;
+		position: relative;
+		border-right: 1px dotted white;
+		:last-child {
+			border-right: none;
+		}		
+		&.active:after {
+			content: "";
+			position: absolute;
+			bottom: -12px;
+			left: 50%;
+			margin-left: -5px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 7px 5px 0 5px;
+			border-color: #FFF transparent transparent transparent;		
+		}		
+	`,
+	CarouselNavItem: styled.button`
+		font-famiy: "nobel-bold",Helvetica,Arial,sans-serif;
+		color: white;
+		text-decoration: none;
+		padding: 0 2rem;
+		cursor: pointer;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 2.1rem;
+		background: transparent;
+		outline: none;
+		border: none;
+	`,
 	Wrapper: styled.div`
 		position: relative;
 		margin: 0;
