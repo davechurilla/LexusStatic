@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Styled from "./index.styled";
 import Slider from "react-slick";
+import ReactHtmlParser from 'react-html-parser';
 
 import Typography from "../Typography";
 import {
@@ -13,7 +14,7 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-//Custom styles
+//Custom Slick styles
 import "./styles.css";
 
 export default class ExploreCarousel extends Component {
@@ -65,12 +66,14 @@ export default class ExploreCarousel extends Component {
           </Styled.CarouselNavItem>
         </Styled.CarouselNavLi>
       ));
+
     const CtaItems = () =>
       this.ctas.map(({ url, text, ...cta }) => (
         <Styled.Button {...cta} as="a" href={`${url}`} key={text}>
           {text}
         </Styled.Button>
       ));
+
     return (
       <Styled.ExploreCarousel {...this.props}>
         <Styled.HeadingComponent>
