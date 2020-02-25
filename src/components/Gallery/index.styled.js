@@ -84,7 +84,7 @@ export default {
 				width: calc(100vw * 0.30);
 				height: calc(100vw * 3/4 * 0.15);
 				margin-left: 30px;
-				transform: translate3d(0px, 9.39844%, 0px);
+				transform: translate3d(0px, 4.99214%, 0px);
 				& > div {
 					position: absolute;
 					bottom: 0;
@@ -140,6 +140,23 @@ export default {
 		width: 100%;
 		display: block;
 		transition: transform .25s ease;
+	`,
+	HasPlayButton: styled.span`
+		width: 45px;
+		height: 45px;
+		background-image: url(//www.lexus.com/concept/shared/img/ui/play_btn.png);
+		background-size: cover;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		opacity: .5;
+		display: block;
+		cursor: pointer;
+		${breakpoint("tablet", "up")} {
+			width: 80px;
+			height: 80px;
+		}
 	`,
 	ThumbnailOverlay: styled.div`
 		position: absolute;

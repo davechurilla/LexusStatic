@@ -9,6 +9,15 @@ import Typography from "../Typography";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const Gallery = ({ images }) => {
+
+	function PlayButton(props) {
+		const hasPlayButton = props.hasPlayButton
+		if(hasPlayButton) {
+			return <Styled.HasPlayButton />
+		}
+		return null
+	} 
+
 	return (
 		<Styled.Gallery>
 			<Styled.GalleryContainer>
@@ -21,6 +30,7 @@ const Gallery = ({ images }) => {
 									src={`${image.thumbnail}`}
 									alt={`${image.alt}`}
 								/>
+								<PlayButton hasPlayButton = {image.playbutton} />
 							</Styled.ThumbOrigin>
 						</Styled.GalleryThumb>
 						<br />
