@@ -23,14 +23,18 @@ export default {
 		}
 		${breakpoint("tablet", "up")} {
 			display: block;
-			br:nth-of-type(13n+1),	
-			br:nth-of-type(13n+3),
-			br:nth-of-type(13n+4),
-			br:nth-of-type(13n+6),
-			br:nth-of-type(13n+8),
-			br:nth-of-type(13n+10),
-			br:nth-of-type(13n+11) {
-				display: none
+			p {
+				margin: 0;
+				padding: 0;
+			}
+			p:nth-of-type(13n+1),	
+			p:nth-of-type(13n+3),
+			p:nth-of-type(13n+4),
+			p:nth-of-type(13n+6),
+			p:nth-of-type(13n+8),
+			p:nth-of-type(13n+10),
+			p:nth-of-type(13n+11) {
+				display: none;
 			}				
 		}						
 	`,
@@ -165,5 +169,9 @@ export default {
 		display: block;
 		z-index: 2;	
 		transition: all .25s ease;
-	`
+	`,
+	ThumbLineBreak: styled.p`
+		margin: 0;
+		padding: 0;					
+	`,
 };

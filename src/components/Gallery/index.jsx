@@ -33,7 +33,7 @@ const Gallery = ({ images }) => {
 								<PlayButton hasPlayButton = {image.playbutton} />
 							</Styled.ThumbOrigin>
 						</Styled.GalleryThumb>
-						<br />
+						<Styled.ThumbLineBreak />
 					</React.Fragment>
 				))}
 			</Styled.GalleryContainer>
