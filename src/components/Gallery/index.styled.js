@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import breakpoint from "../../packages/breakpoints";
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 
 export default {
 	Gallery: styled.div`
