@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Styled from "./index.styled";
 import Carousel, { Modal, ModalGateway } from 'react-images';
+import { Poster, Posters } from './Poster';
 import {
   MobileBreakpoint,
   TabletBreakpoint,
@@ -9,17 +10,16 @@ import {
 import Typography from "../Typography";
 
 export default class Gallery extends Component {
-  constructor(props) {
-    super(props);
-  }
 	state = {
 		selectedIndex: 0,
-		lightboxIsOpen: false
+		lightboxIsOpen: false,
+		video: false
 	};
-	toggleLightbox = (selectedIndex) => {
+	toggleLightbox = (selectedIndex, video) => {
 		this.setState(state => ({
 			lightboxIsOpen: !this.state.lightboxIsOpen,
-			selectedIndex
+			selectedIndex,
+			video
 		}));
 	};
 
@@ -40,7 +40,7 @@ export default class Gallery extends Component {
         <Styled.GalleryContainer>
           {props.images.map((image, j) => (
             <React.Fragment key={image.thumbnail}>
-              <Styled.GalleryThumb onClick={() => this.toggleLightbox(j)}>
+              <Styled.GalleryThumb onClick={() => this.toggleLightbox(j, image.playbutton)}>
                 <Styled.ThumbOrigin>
                   <Styled.ThumbnailOverlay></Styled.ThumbnailOverlay>
                   <Styled.ThumbnailImage
@@ -54,19 +54,33 @@ export default class Gallery extends Component {
             </React.Fragment>
           ))}
         </Styled.GalleryContainer>
+				<Posters>
+          {this.props.videos.map((vid, idx) => (
+            <Poster
+              key={idx}
+              data={vid}
+              onClick={() => this.toggleLightbox(idx)}
+            />
+          ))}
+        </Posters>
         <ModalGateway>
           {this.state.lightboxIsOpen ? (
 						<Modal 
 						onClose={this.toggleLightbox}
 						allowFullscreen = {false}
 						>
-              <Carousel
-								// components={{ FooterCaption }}
+              {this.state.video === true ?
+							<Carousel
                 currentIndex={this.state.selectedIndex}
-                // formatters={{ getAltText }}
                 frameProps={{ autoSize: 'height' }}
-                views={this.props.images}
-              />
+								views={this.props.videos} 
+							/> :
+							<Carousel
+							currentIndex={this.state.selectedIndex}
+							frameProps={{ autoSize: 'height' }}
+							views={this.props.images}
+							/>
+							}
             </Modal>
           ) : null}
         </ModalGateway>		
