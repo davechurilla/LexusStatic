@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Styled from "./index.styled";
 import Carousel, { Modal, ModalGateway } from 'react-images';
-import { Poster, Posters } from './Poster';
+import View from './View';
+
 import {
   MobileBreakpoint,
   TabletBreakpoint,
@@ -54,33 +55,18 @@ export default class Gallery extends Component {
             </React.Fragment>
           ))}
         </Styled.GalleryContainer>
-				<Posters>
-          {this.props.videos.map((vid, idx) => (
-            <Poster
-              key={idx}
-              data={vid}
-              onClick={() => this.toggleLightbox(idx)}
-            />
-          ))}
-        </Posters>
         <ModalGateway>
           {this.state.lightboxIsOpen ? (
 						<Modal 
 						onClose={this.toggleLightbox}
 						allowFullscreen = {false}
 						>
-              {this.state.video === true ?
 							<Carousel
                 currentIndex={this.state.selectedIndex}
+                components={{ Footer: null, View }}
                 frameProps={{ autoSize: 'height' }}
-								views={this.props.videos} 
-							/> :
-							<Carousel
-							currentIndex={this.state.selectedIndex}
-							frameProps={{ autoSize: 'height' }}
-							views={this.props.images}
-							/>
-							}
+                views={this,props.videos}
+							/> 
             </Modal>
           ) : null}
         </ModalGateway>		

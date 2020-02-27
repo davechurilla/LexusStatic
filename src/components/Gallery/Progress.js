@@ -2,7 +2,7 @@
 // @jsx glam
 import glam from 'glam';
 import React from 'react';
-import { colors } from '../../../theme';
+// import { colors } from '../../../theme';
 
 type Props = { progress: number };
 
@@ -26,7 +26,7 @@ const ProgressBar = ({ progress }: Props) => (
 const Progress = ({ progress }: Props) => (
   <div
     css={{
-      backgroundColor: colors.primary,
+      // backgroundColor: colors.primary,
       borderRadius: height / 2,
       top: 0,
       left: 0,

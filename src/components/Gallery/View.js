@@ -6,7 +6,7 @@ import rafScheduler from 'raf-schd';
 
 import Icon from './Icon';
 import ProgressBar from './Progress';
-import { colors } from '../../../theme';
+// import { colors } from '../../../theme';
 
 type UrlShape = {
   type: 'video/mp4' | 'video/ogg',
@@ -65,7 +65,7 @@ const Button = props => (
       width: 32,
 
       ':hover': { opacity: 1 },
-      ':active': { color: colors.primary },
+      // ':active': { color: colors.primary },
     }}
     {...props}
   />
@@ -127,7 +127,6 @@ export default class View extends Component<ViewProps, ViewState> {
   render() {
     const { data, interactionIsIdle } = this.props;
     const { progress } = this.state;
-    const width = 854;
 
     return (
       <div
@@ -136,13 +135,12 @@ export default class View extends Component<ViewProps, ViewState> {
           lineHeight: 0,
           marginLeft: 'auto',
           marginRight: 'auto',
-          maxWidth: width,
           position: 'relative',
           textAlign: 'center',
         }}
       >
         <video
-          autoPlay={false}
+          autoPlay={true}
           controls={false}
           onClick={this.playOrPause}
           poster={data.poster}
