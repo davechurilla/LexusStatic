@@ -1,5 +1,22 @@
 export default {
   props: {
+    views: [
+      {type: "videos"},
+      {type: "images"},
+      {type: "images"},
+      {type: "images"},
+      {type: "videos"},
+      {type: "images"},
+      {type: "videos"},
+      {type: "images"},
+      {type: "videos"},
+      {type: "images"},
+      {type: "videos"},
+      {type: "images"},
+      {type: "images"},
+      {type: "videos"},
+      {type: "images"}
+    ],
     images: [
       {
         id: 0,

@@ -6,7 +6,7 @@ import rafScheduler from 'raf-schd';
 
 import Icon from './Icon';
 import ProgressBar from './Progress';
-// import { colors } from '../../../theme';
+import { colors } from './theme';
 
 type UrlShape = {
   type: 'video/mp4' | 'video/ogg',
@@ -65,7 +65,7 @@ const Button = props => (
       width: 32,
 
       ':hover': { opacity: 1 },
-      // ':active': { color: colors.primary },
+      ':active': { color: colors.primary },
     }}
     {...props}
   />
@@ -152,8 +152,10 @@ export default class View extends Component<ViewProps, ViewState> {
           ))}
           Your browser does not support HTML5 video.
         </video>
+      {/* {console.log(this.video)} */}
         {this.video ? (
           <Footer interactionIsIdle={interactionIsIdle}>
+            <script></script>
             <Button onClick={this.playOrPause}>
               <Icon type={this.state.paused ? 'play' : 'pause'} size={32} />
             </Button>

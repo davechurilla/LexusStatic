@@ -1,3 +1,7 @@
+
+// @flow
+// @jsx glam
+import glam from 'glam';
 import React, { Component } from "react";
 import Styled from "./index.styled";
 import Carousel, { Modal, ModalGateway } from 'react-images';
@@ -16,6 +20,10 @@ export default class Gallery extends Component {
 		lightboxIsOpen: false,
 		video: false
 	};
+	handleViewChange = (view) => {
+		console.log(view)
+	}
+
 	toggleLightbox = (selectedIndex, video) => {
 		this.setState(state => ({
 			lightboxIsOpen: !this.state.lightboxIsOpen,
@@ -61,12 +69,23 @@ export default class Gallery extends Component {
 						onClose={this.toggleLightbox}
 						allowFullscreen = {false}
 						>
+              {this.state.video === true ?
 							<Carousel
                 currentIndex={this.state.selectedIndex}
                 components={{ Footer: null, View }}
                 frameProps={{ autoSize: 'height' }}
-                views={this,props.videos}
-							/> 
+								views={this.props.videos}
+								trackProps={{
+									onViewChange: this.handleViewChange(this.props.views[this.state.selectedIndex].type) }}								
+							/> :
+							<Carousel
+							currentIndex={this.state.selectedIndex}
+							frameProps={{ autoSize: 'height' }}
+							views={this.props.images}
+							trackProps={{ 
+								onViewChange: this.handleViewChange(this.props.views[this.state.selectedIndex].type) }}
+							/>
+							}
             </Modal>
           ) : null}
         </ModalGateway>		
