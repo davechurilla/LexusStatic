@@ -1,0 +1,51 @@
+.slick-prev {
+    left: calc(50% - 43px);
+    transform: translate(-50%,0);
+}
+
+.slick-next {
+    right: calc(50% - 43px);
+    transform: translate(50%,0);
+}
+
+.slick-prev:before,
+.slick-next:before {
+    opacity: 1;
+}
+
+.slick-prev:before {
+    content: url('https://www.lexus.com/performance/img/left.png');
+}
+
+.slick-next:before {
+    content: url('https://www.lexus.com/performance/img/right.png');
+}
+
+.slick-prev,
+.slick-next {
+    bottom: 33px;
+    top: unset;
+    z-index: 1000;
+}
+
+.slick-dots {
+    bottom: 30px;
+}
+
+.slick-dots li {
+    margin: 0 -1px;
+}
+
+.slick-dots li button:before {
+    font-size: 10px;
+}    
+
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: white;
+}
+
+.slick-dots li button:before {
+    opacity: 1;
+    color: #666;
+}
